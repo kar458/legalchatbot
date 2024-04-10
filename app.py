@@ -10,8 +10,17 @@ model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-medium")
 app=Flask(__name__)
 
 @app.route("/")
+
 def index():
-    return render_template("index.html")
+    return render_template("home.html")
+
+@app.route("/page1")
+def page1():
+    return render_template("index.html",title='Page1')
+
+@app.route('/page2')
+def page2():
+    return render_template('index.html', title='Page2')
 
 @app.route("/get",methods=["GET","POST"])
 

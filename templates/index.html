@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Chatbot</title>
+		<title>{{ title }}</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -24,7 +24,7 @@
 									<img src="https://i.ibb.co/fSNP7Rz/icons8-chatgpt-512.png" class="rounded-circle user_img">
 									<span class="online_icon"></span>
 								</div>
-								<div class="user_info">
+								<div id="titbot" class="user_info">
 									<span>ChatBot</span>
 									<p>Ask me anything!</p>
 								</div>
@@ -47,7 +47,25 @@
 			</div>
         </div>
 		<script>
-			$(document).ready( function() {
+				$(document).ready( function() {
+					var pageTitle = $('title').text().trim(); // Trim whitespace from the page title
+
+// Use a switch statement for better readability and ease of adding more cases
+				switch (pageTitle) {
+					case 'Page1':
+						console.log("1 da");
+						$('#titbot span').text('Legal Doubt Bot');
+						$('#titbot p').text('Ask anything for legal assistance');
+						break;
+					case 'Page2':
+						console.log("2 da");
+						$('#titbot span').text('Woman Legal Bot');
+						$('#titbot p').text("Ask anything for women's law");
+						break;
+					default:
+						console.log("Page not recognized: " + pageTitle);
+						break;
+				}
 				$("#messageArea").on("submit",function(event) {
 					const date= new Date();
 					const hour=date.getHours();
